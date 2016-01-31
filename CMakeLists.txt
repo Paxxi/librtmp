@@ -53,3 +53,12 @@ set(DUMP_SRCS
 
 add_executable(rtmpdump ${DUMP_SRCS})
 target_link_libraries(rtmpdump librtmp)
+
+install(TARGETS rtmpdump librtmp
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib)
+
+FILE(GLOB includes "${CMAKE_SOURCE_DIR}/librtmp/*.h")
+install(FILES ${includes}
+	DESTINATION include/librtmp)
